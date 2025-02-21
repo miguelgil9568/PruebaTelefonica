@@ -1,2 +1,0 @@
-1,Operación realizada con éxito: 1.0/2.0,hola,0.5
-2,Operación realizada con éxito: 1.0*2.0,hola,2.0
