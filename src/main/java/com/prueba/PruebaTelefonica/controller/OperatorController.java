@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,9 +24,15 @@ public class OperatorController {
     @Autowired
     private OperatorService operatorService;
 
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    @PostMapping("/procesar")
-    public ResponseEntity<OperatorResponse> procesarOperacion(@RequestBody @Valid OperatorRequest operatorRequest, @RequestParam @Valid @Pattern(regexp = "^[a-zA-Z0-9]+$", message = "El dato debe ser alfanumérico sin caracteres especiales ni espacios.") String mensaje) {
+    @PostMapping("/operar")
+    public ResponseEntity<?> operarOperacion(@RequestParam @Valid @Pattern(regexp = "^[a-zA-Z0-9]+$",
+            message = "El mensaje debe ser alfanumérico sin caracteres especiales, ni espacios.") String mensaje,
+                                             @RequestBody @Valid OperatorRequest operatorRequest
+                                                             , BindingResult result) {
+        if (result.hasErrors()) {
+            String errorMessage = result.getFieldError().getDefaultMessage();
+            return ResponseEntity.badRequest().body("Error: " + errorMessage);
+        }
         return ResponseEntity.ok(operatorService.procesarOperacion(operatorRequest, mensaje));
     }
 

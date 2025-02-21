@@ -1,12 +1,2 @@
-1,Operación realizada con éxito: 1.0+2.0,holaMundo
-1,Operación realizada con éxito: 1.0+2.0,holaMundo
-2,Operación realizada con éxito: 1.0-2.0,holaMundo
-3,Operación realizada con éxito: 1.0*2.0,holaMundo
-4,Operación realizada con éxito: 1.0/2.0,holaMundo
-1,Operación realizada con éxito: 1.0*2.0,hola mundo
-2,Operación realizada con éxito: 1.0*2.0,hola mundo sadasdas
-1,Operación realizada con éxito: 1.0*2.0,hola
-2,Operación realizada con éxito: 1.0*2.0,hola
-1,Operación realizada con éxito: 1.0*2.0,hola
-2,Operación realizada con éxito: 1.0*2.0,hola
-3,Operación realizada con éxito: 1.0*2.0,hola
+1,Operación realizada con éxito: 1.0/2.0,hola,0.5
+2,Operación realizada con éxito: 1.0*2.0,hola,2.0

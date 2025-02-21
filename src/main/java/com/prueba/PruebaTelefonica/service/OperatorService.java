@@ -17,12 +17,11 @@ public class OperatorService {
     private static final String SUCCESS_CODE = "200";
     private static final String ERROR_CODE = "500";
 
-    private static long idCounter = 1;
+    private static int idCounter = 1;
 
     public OperatorResponse procesarOperacion(OperatorRequest operacion, String datosAlfanumericos) {
-        String resultadoOperacion = "Operación realizada con éxito: " + operacion.getValor1() + operacion.getOperador() + operacion.getValor2()  ;
         String mensaje = "La operación se procesó correctamente.";
-        long identificador = idCounter++;
+        int identificador = idCounter++;
         double resultado;
         switch (operacion.getOperador()) {
             case "+":
@@ -41,9 +40,9 @@ public class OperatorService {
                 mensaje = "La operación no se procesó correctamente.";
                 return new OperatorResponse(ERROR_CODE, mensaje, identificador, "Error en el operador");
         }
+        String resultadoOperacion = "Operación realizada con éxito: " + operacion.getValor1() + operacion.getOperador() + operacion.getValor2();
 
-        FileUtil.guardarEnArchivo(identificador, resultadoOperacion, datosAlfanumericos);
-
+        FileUtil.guardarEnArchivo(identificador, resultadoOperacion , datosAlfanumericos, resultado);
         return new OperatorResponse(SUCCESS_CODE, mensaje, identificador, resultadoOperacion + " = " + resultado);
     }
 

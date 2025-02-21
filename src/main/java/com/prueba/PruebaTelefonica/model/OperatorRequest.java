@@ -14,7 +14,6 @@ public class OperatorRequest {
     private double valor1;
     private double valor2;
 
-    @Valid
     @Pattern(regexp = "^[\\+\\-\\*\\/]+$", message = "El operador debe ser uno de los siguientes: +, -, *, /.")
     private String operador;
 }
